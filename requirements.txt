@@ -1,0 +1,8 @@
+colour==0.1.5
+matplotlib==3.4.1
+pandas==1.4.0
+pandas_stubs==1.2.0.38
+Pillow==9.0.0
+pyxlsb==1.0.9
+snscrape==0.3.4
+streamlit==1.2.0
