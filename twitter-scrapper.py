@@ -41,7 +41,7 @@ def to_excel(df):
 def convert_df(df):
     return df.to_csv().encode('utf-8')
 
-image = Image.open('/Users/amerwafiy/Downloads/scraper-webapp/invoke_logo.jpg')
+image = Image.open('invoke_logo.jpg')
 st.image(image)
 st.title('Social Media Scraper')
 
