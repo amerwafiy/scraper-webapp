@@ -135,7 +135,9 @@ if option1 == 'Twitter 🐦':
                     st.table(tweets_df[['Date', 'Tweet', 'Mention', 'Keyword']][:5])
                 else:
                     st.table(tweets_df[['Date', 'Tweet', 'Mention', 'Keyword']])
-                df_xlsx = to_excel(tweets_df)
+                csv = convert_df(tweets_df)
+                st.download_button(label="📥 Download data as CSV", data=csv,file_name='tweets_df.csv', mime='text/csv')
+#                 df_xlsx = to_excel(tweets_df)
 #                 st.download_button(label='📥 Download Full Data', data=df_xlsx, file_name='tweets_'+ str(max_results)+ '.xlsx')
 
 elif option1 == 'Facebook 📘':
