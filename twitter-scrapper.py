@@ -37,6 +37,11 @@ def to_excel(df):
     processed_data = output.getvalue()
     return processed_data
 
+@st.cache
+ def convert_df(df):
+     # IMPORTANT: Cache the conversion to prevent computation on every rerun
+     return df.to_csv().encode('utf-8')
+
 image = Image.open('invoke_logo.jpg')
 st.image(image)
 st.title('Social Media Scraper')
@@ -88,7 +93,9 @@ if option1 == 'Twitter 🐦':
                     st.table(tweets_df[['Date', 'Tweet']][:5])
                 else:
                     st.table(tweets_df[['Date', 'Tweet']])
-                df_xlsx = to_excel(tweets_df)
+                csv = convert_df(tweets_df)
+                st.download_button(label="📥 Download data as CSV", data=csv,file_name='tweets_df.csv', mime='text/csv')
+#                 df_xlsx = to_excel(tweets_df)
 #                 st.download_button(label='📥 Download Full Data', data=df_xlsx, file_name='tweets_'+ str(max_results)+ '.xlsx')
 
     elif option == 'Scrape on keyword/hashtag 💬':
