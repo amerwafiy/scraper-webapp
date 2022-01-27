@@ -16,14 +16,14 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 pd.set_option('max_colwidth', None)
 
-# hide_st_style = """
-#             <style>
-#             #MainMenu {visibility: hidden;}
-#             footer {visibility: hidden;}
-#             header {visibility: hidden;}
-#             </style>
-#             """
-# st.markdown(hide_st_style, unsafe_allow_html=True)
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 def to_excel(df):
     output = BytesIO()
@@ -88,7 +88,7 @@ if option1 == 'Twitter 🐦':
                     st.table(tweets_df[['Date', 'Tweet']][:5])
                 else:
                     st.table(tweets_df[['Date', 'Tweet']])
-#                 df_xlsx = to_excel(tweets_df)
+                df_xlsx = to_excel(tweets_df)
 #                 st.download_button(label='📥 Download Full Data', data=df_xlsx, file_name='tweets_'+ str(max_results)+ '.xlsx')
 
     elif option == 'Scrape on keyword/hashtag 💬':
@@ -129,7 +129,7 @@ if option1 == 'Twitter 🐦':
                     st.table(tweets_df[['Date', 'Tweet', 'Mention', 'Keyword']][:5])
                 else:
                     st.table(tweets_df[['Date', 'Tweet', 'Mention', 'Keyword']])
-#                 df_xlsx = to_excel(tweets_df)
+                df_xlsx = to_excel(tweets_df)
 #                 st.download_button(label='📥 Download Full Data', data=df_xlsx, file_name='tweets_'+ str(max_results)+ '.xlsx')
 
 elif option1 == 'Facebook 📘':
