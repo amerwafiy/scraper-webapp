@@ -38,9 +38,8 @@ def to_excel(df):
     return processed_data
 
 @st.cache
- def convert_df(df):
-     # IMPORTANT: Cache the conversion to prevent computation on every rerun
-     return df.to_csv().encode('utf-8')
+def convert_df(df):
+    return df.to_csv().encode('utf-8')
 
 image = Image.open('invoke_logo.jpg')
 st.image(image)
