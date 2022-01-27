@@ -88,8 +88,8 @@ if option1 == 'Twitter 🐦':
                     st.table(tweets_df[['Date', 'Tweet']][:5])
                 else:
                     st.table(tweets_df[['Date', 'Tweet']])
-                df_xlsx = to_excel(tweets_df)
-                st.download_button(label='📥 Download Full Data', data=df_xlsx, file_name='tweets_'+ str(max_results)+ '.xlsx')
+#                 df_xlsx = to_excel(tweets_df)
+#                 st.download_button(label='📥 Download Full Data', data=df_xlsx, file_name='tweets_'+ str(max_results)+ '.xlsx')
 
     elif option == 'Scrape on keyword/hashtag 💬':
         search= st.text_input('Enter keyword/hashtag (Please separate multiple keywords/hashtags by "," e.g. Bitcoin,#Ethereum)', '')
@@ -129,8 +129,8 @@ if option1 == 'Twitter 🐦':
                     st.table(tweets_df[['Date', 'Tweet', 'Mention', 'Keyword']][:5])
                 else:
                     st.table(tweets_df[['Date', 'Tweet', 'Mention', 'Keyword']])
-                df_xlsx = to_excel(tweets_df)
-                st.download_button(label='📥 Download Full Data', data=df_xlsx, file_name='tweets_'+ str(max_results)+ '.xlsx')
+#                 df_xlsx = to_excel(tweets_df)
+#                 st.download_button(label='📥 Download Full Data', data=df_xlsx, file_name='tweets_'+ str(max_results)+ '.xlsx')
 
 elif option1 == 'Facebook 📘':
     st.subheader('Facebook scraper coming soon! Stay tuned!! 🤗')
