@@ -48,7 +48,7 @@ def convert_df(df):
 image = Image.open('invoke_logo.jpg')
 
 st.sidebar.title('Social Media Scraper')
-st.sidebar.image(image)
+#st.sidebar.image(image)
 option1 = st.sidebar.selectbox('Select a platform', ('Twitter 🐦', 'Facebook 📘', 'Instagram 📸'))
 
 if option1 == 'Twitter 🐦':
