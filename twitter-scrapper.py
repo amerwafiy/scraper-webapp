@@ -12,14 +12,14 @@ from PIL import Image
 import matplotlib.pyplot as plt
 from colour import Color
 
-# hide_st_style = """
-#             <style>
-#             #MainMenu {visibility: hidden;}
-#             footer {visibility: hidden;}
-#             header {visibility: hidden;}
-#             </style>
-#             """
-# st.markdown(hide_st_style, unsafe_allow_html=True)
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 def to_excel(df):
     output = BytesIO()
@@ -46,11 +46,7 @@ def convert_df(df):
     return df.to_csv().encode('utf-8')
 
 image = Image.open('invoke_logo.jpg')
-coming_soon = Image.open('coming-soon.jpeg')
-# st.image(image)
-# st.title('Social Media Scraper')
 
-#option1 = st.selectbox('Select a platform', ('Twitter 🐦', 'Facebook 📘', 'Instagram 📸'))
 st.sidebar.title('Social Media Scraper')
 st.sidebar.image(image)
 option1 = st.sidebar.selectbox('Select a platform', ('Twitter 🐦', 'Facebook 📘', 'Instagram 📸'))
@@ -157,7 +153,6 @@ if option1 == 'Twitter 🐦':
                     st.download_button(label='📥 Download as Excel', data=df_xlsx, file_name='tweets_'+ str(max_results)+ '.xlsx')
 
 elif option1 == 'Facebook 📘':
-    #st.image(coming_soon)
     st.subheader('Facebook scraper coming soon! Stay tuned!! 🤗')
 
 elif option1 == 'Instagram 📸':
