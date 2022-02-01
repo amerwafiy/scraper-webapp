@@ -70,17 +70,18 @@ if option1 == 'Twitter 🐦':
             for user in users:
                 user = user.strip()
                 search_term = user + ' since:' + str(from_date) + ' until:' + str(end_date)
-                for i,data in enumerate(sntwitter.TwitterUserScraper(search_term).get_items()):
-                    if i == int(max_results):
-                        break
-                    date = pd.to_datetime(str(data.date)[:19]) + timedelta(hours=8)
-                    time = str(date)[11:]
-                    username = data.username
-                    tweet, mention, link = clean_tweet(data.content)
-                    if len(mention) > 0:
-                        mention = ['@' + x for x in mention]
-                    url = data.url
-                    tweets_list.append([date, time , username, tweet, mention, link, url])
+                with st.spinner('Scraping tweets...'):
+                    for i,data in enumerate(sntwitter.TwitterUserScraper(search_term).get_items()):
+                        if i == int(max_results):
+                            break
+                        date = pd.to_datetime(str(data.date)[:19]) + timedelta(hours=8)
+                        time = str(date)[11:]
+                        username = data.username
+                        tweet, mention, link = clean_tweet(data.content)
+                        if len(mention) > 0:
+                            mention = ['@' + x for x in mention]
+                        url = data.url
+                        tweets_list.append([date, time , username, tweet, mention, link, url])
 
             if len(tweets_list) == 0:
                 st.write('No tweets found! Please make sure you entered the correct profile name')
@@ -96,14 +97,7 @@ if option1 == 'Twitter 🐦':
                 if len(tweets_df) < int(max_results):
                     st.write(str(len(tweets_df)) + ' tweets returned')
                 csv = convert_df(tweets_df)
-                df_xlsx = to_excel(tweets_df)
-                
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    st.download_button(label="📥 Download as CSV", data=csv,file_name='tweets_df.csv', mime='text/csv')
-                
-                with col2:
-                    st.download_button(label='📥 Download as Excel', data=df_xlsx, file_name='tweets_'+ str(max_results)+ '.xlsx')
+                st.download_button(label="📥 Download data as CSV", data=csv,file_name='tweets_df.csv', mime='text/csv')
 
 
     elif option == 'Scrape on keyword/hashtag 💬':
@@ -114,20 +108,21 @@ if option1 == 'Twitter 🐦':
         if st.button('Scrape Tweet!'):
             tweets_list = []
             search = search.split(',')
-            for s in search:
-                search_term = s + ' since:' + str(from_date) + ' until:' + str(end_date)
-                for i,data in enumerate(sntwitter.TwitterSearchScraper(search_term).get_items()):
-                    if i == int(max_results):
-                        break
-                    date = pd.to_datetime(str(data.date)[:19]) + timedelta(hours=8)
-                    time = str(date)[11:]
-                    keyword = s
-                    tweet = data.content
-                    tweet, mention, link = clean_tweet(data.content)
-                    if len(mention) > 0:
-                        mention = ['@' + x for x in mention]
-                    url = data.url
-                    tweets_list.append([date, time , tweet, keyword, mention, link, url])
+            with st.spinner('Scraping tweets...'):
+                for s in search:
+                    search_term = s + ' since:' + str(from_date) + ' until:' + str(end_date)
+                    for i,data in enumerate(sntwitter.TwitterSearchScraper(search_term).get_items()):
+                        if i == int(max_results):
+                            break
+                        date = pd.to_datetime(str(data.date)[:19]) + timedelta(hours=8)
+                        time = str(date)[11:]
+                        keyword = s
+                        tweet = data.content
+                        tweet, mention, link = clean_tweet(data.content)
+                        if len(mention) > 0:
+                            mention = ['@' + x for x in mention]
+                        url = data.url
+                        tweets_list.append([date, time , tweet, keyword, mention, link, url])
 
             if len(tweets_list) == 0:
                 st.write('No tweets found!')
@@ -143,14 +138,7 @@ if option1 == 'Twitter 🐦':
                 if len(tweets_df) < int(max_results):
                     st.write(str(len(tweets_df)) + ' tweets returned')
                 csv = convert_df(tweets_df)
-                df_xlsx = to_excel(tweets_df)
-            
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    st.download_button(label="📥 Download as CSV", data=csv,file_name='tweets_df.csv', mime='text/csv')
-                
-                with col2:
-                    st.download_button(label='📥 Download as Excel', data=df_xlsx, file_name='tweets_'+ str(max_results)+ '.xlsx')
+                st.download_button(label="📥 Download data as CSV", data=csv,file_name='tweets_df.csv', mime='text/csv')
 
 elif option1 == 'Facebook 📘':
     st.subheader('Facebook scraper coming soon! Stay tuned!! 🤗')
