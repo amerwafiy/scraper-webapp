@@ -98,7 +98,8 @@ if option1 == 'Twitter 🐦':
                     st.write(str(len(tweets_df)) + ' tweets returned')
                 csv = convert_df(tweets_df)
                 st.download_button(label="📥 Download data as CSV", data=csv,file_name='tweets_df.csv', mime='text/csv')
-
+                df_xlsx = to_excel(tweets_df)
+                st.download_button(label='📥 Download Result', data=df_xlsx, file_name='tweets_df.csv')
 
     elif option == 'Scrape on keyword/hashtag 💬':
         search= st.text_input('Enter keyword/hashtag (Please separate multiple keywords/hashtags by "," e.g. Bitcoin,#Ethereum)', '')
