@@ -52,7 +52,7 @@ st.sidebar.image(image)
 option1 = st.sidebar.selectbox('Select a platform', ('Twitter 🐦', 'Facebook 📘', 'Instagram 📸'))
 
 if option1 == 'Twitter 🐦':
-    twitter = Image.open('/Users/amerwafiy/Downloads/scraper-webapp/twitter-logo.png')
+    twitter = Image.open('twitter-logo.png')
     st.image(twitter)
     option = st.sidebar.selectbox('Choose a scraping option',
         ('Scrape on user 👨‍👩‍👧‍👦', 'Scrape on keyword/hashtag 💬'))
