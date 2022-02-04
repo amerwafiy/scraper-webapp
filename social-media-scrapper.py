@@ -77,7 +77,7 @@ if option1 == 'Twitter 🐦':
         ('Scrape on user 👨‍👩‍👧‍👦', 'Scrape on keyword/hashtag 💬'))
 
     if option == 'Scrape on user 👨‍👩‍👧‍👦':
-        users= st.text_input('Enter username(Separate multiple users by "," e.g. rafiziramli,najibrazak)', '')
+        users= st.text_input('Enter username (Separate multiple users by "," e.g. rafiziramli,najibrazak)', '')
         from_date = st.date_input("From", value = dt.date.today() - dt.timedelta(days=1), max_value = dt.date.today() - dt.timedelta(days=1))
         end_date = str(st.date_input("Until", max_value = dt.date.today(), min_value = from_date + dt.timedelta(days=1)))
         max_results = st.text_input('Set maximum number of tweets to scrape per profile', '')
