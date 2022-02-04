@@ -12,14 +12,14 @@ from PIL import Image
 import matplotlib.pyplot as plt
 from colour import Color
 
-# hide_st_style = """
-#             <style>
-#             #MainMenu {visibility: hidden;}
-#             footer {visibility: hidden;}
-#             header {visibility: hidden;}
-#             </style>
-#             """
-# st.markdown(hide_st_style, unsafe_allow_html=True)
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 def to_excel(df):
     output = BytesIO()
@@ -64,14 +64,14 @@ def scrape_tweets(search_term, max_tweets):
     return user_tweets
 
 
-image = Image.open('/Users/amerwafiy/Desktop/Projects/scraper-webapp/invoke_logo.jpg')
+image = Image.open('invoke_logo.jpg')
 
 st.sidebar.title('Social Media Scraper')
 st.sidebar.image(image)
 option1 = st.sidebar.selectbox('Select a platform', ('Twitter 🐦', 'Facebook 📘', 'Instagram 📸'))
 
 if option1 == 'Twitter 🐦':
-    twitter = Image.open('/Users/amerwafiy/Desktop/Projects/scraper-webapp/twitter-logo.png')
+    twitter = Image.open('twitter-logo.png')
     st.image(twitter)
     option = st.sidebar.selectbox('Choose a scraping option',
         ('Scrape on user 👨‍👩‍👧‍👦', 'Scrape on keyword/hashtag 💬'))
