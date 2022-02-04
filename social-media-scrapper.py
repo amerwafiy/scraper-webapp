@@ -12,14 +12,14 @@ from PIL import Image
 import matplotlib.pyplot as plt
 from colour import Color
 
-# hide_st_style = """
-#             <style>
-#             #MainMenu {visibility: hidden;}
-#             footer {visibility: hidden;}
-#             header {visibility: hidden;}
-#             </style>
-#             """
-# st.markdown(hide_st_style, unsafe_allow_html=True)
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 def to_excel(df):
     output = BytesIO()
@@ -64,7 +64,7 @@ def scrape_tweets(search_term, max_tweets):
     return user_tweets
 
 
-image = Image.open('/Users/amerwafiy/Desktop/Projects/scraper-webapp/invoke_logo.jpg')
+image = Image.open('invoke_logo.jpg')
 
 st.sidebar.title('Social Media Scraper')
 st.sidebar.image(image)
@@ -120,6 +120,7 @@ if option1 == 'Twitter 🐦':
                             show_tweets.append(curr_df[['Date', 'Username', 'Tweet']].head(3))
                         show_tweets = pd.concat(show_tweets).reset_index(drop = True)
                         show_tweets.index += 1
+                        st.subheader('Sample Data')
                         st.table(show_tweets)
                     csv = convert_df(tweets_df)
                     st.download_button(label="📥 Download data as CSV", data=csv,file_name='tweets_df.csv', mime='text/csv')
@@ -173,6 +174,7 @@ if option1 == 'Twitter 🐦':
                             show_tweets.append(curr_df[['Date', 'Username', 'Tweet','Keyword']].head(3))
                         show_tweets = pd.concat(show_tweets).reset_index(drop = True)
                         show_tweets.index += 1
+                        st.subheader('Sample Data')
                         st.table(show_tweets)
                     csv = convert_df(tweets_df)
                     st.download_button(label="📥 Download data as CSV", data=csv,file_name='tweets_df.csv', mime='text/csv')
@@ -182,11 +184,11 @@ if option1 == 'Twitter 🐦':
 
 
 elif option1 == 'Facebook 📘':
-    fb = Image.open('/Users/amerwafiy/Desktop/Projects/scraper-webapp/facebook-logo.jpeg')
+    fb = Image.open('facebook-logo.jpeg')
     st.image(fb)
     st.subheader('Facebook scraper coming soon! Stay tuned!! 🤗')
 
 elif option1 == 'Instagram 📸':
-    ig = Image.open('/Users/amerwafiy/Desktop/Projects/scraper-webapp/instagram-logo.jpeg')
+    ig = Image.open('instagram-logo.jpeg')
     st.image(ig)
     st.subheader('Instagram scraper coming soon! Stay tuned!! 🤗')
