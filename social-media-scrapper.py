@@ -123,7 +123,7 @@ if option1 == 'Twitter 🐦':
                         st.subheader('Sample Data')
                         st.table(show_tweets)
                     csv = convert_df(tweets_df)
-                    st.download_button(label="📥 Download data as CSV", data=csv,file_name='tweets_df.csv', mime='text/csv')
+                    st.download_button(label="📥 Download full data as CSV", data=csv,file_name='tweets_df.csv', mime='text/csv')
             
             except ValueError:
                 st.write('Please input an integer value for maximum number of tweets to scrape!')
@@ -177,7 +177,7 @@ if option1 == 'Twitter 🐦':
                         st.subheader('Sample Data')
                         st.table(show_tweets)
                     csv = convert_df(tweets_df)
-                    st.download_button(label="📥 Download data as CSV", data=csv,file_name='tweets_df.csv', mime='text/csv')
+                    st.download_button(label="📥 Download full data as CSV", data=csv,file_name='tweets_df.csv', mime='text/csv')
         
             except ValueError:
                 st.write('Please input an integer value for maximum number of tweets to scrape!')
