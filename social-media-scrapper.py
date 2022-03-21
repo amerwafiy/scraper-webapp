@@ -45,7 +45,7 @@ def clean_tweet(tweet):
 
 @st.cache
 def convert_df(df):
-    return df.to_csv().encode('utf-8')
+    return df.to_csv(index = False).encode('utf-8')
 
 @st.cache(show_spinner = False)
 def scrape_tweets(search_term, max_tweets):
